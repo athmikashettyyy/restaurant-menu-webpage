@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ZAIRA • 5-Star Michelin Restaurant</title>
+
+<style>
+/* Reset */
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+body{background:#f5f1eb;color:#333;scroll-behavior:smooth;}
+
+/* HERO SECTION */
+.hero {
+    height:70vh;
+    background:url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    color:white;
+    text-shadow:0 4px 20px #000;
+    padding:20px;
+}
+.hero h1 {font-size:70px;letter-spacing:4px;}
+.hero p {font-size:22px;margin-top:10px;}
+
+/* NAVIGATION */
+nav {
+    position:sticky;
+    top:0;
+    background:#8b1818;
+    padding:12px;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    z-index:10;
+    box-shadow:0 3px 10px rgba(0,0,0,0.3);
+}
+nav a {
+    color:white;
+    text-decoration:none;
+    font-size:17px;
+}
+nav a:hover {text-decoration:underline;}
+
+/* SECTION TITLES */
+section h2 {
+    text-align:center;
+    margin:40px 0 20px;
+    font-size:35px;
+}
+
+/* FILTER BUTTONS */
+.filters {
+    text-align:center;
+    padding:20px 10px;
+}
+.filters button {
+    border:none;
+    padding:12px 22px;
+    margin:8px;
+    border-radius:30px;
+    background:#c02121;
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+    transition:0.2s;
+}
+.filters button:hover {
+    background:#8a1616;
+    transform:scale(1.05);
+}
+
+/* MENU GRID */
+.menu {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+    padding:40px;
+}
+.card {
+    background:white;
+    border-radius:18px;
+    padding:20px;
+    box-shadow:0 3px 12px rgba(0,0,0,0.1);
+    transition:0.3s;
+    position:relative;
+}
+.card:hover {transform:translateY(-7px);}
+.card img {
+    width:100%;
+    height:180px;
+    border-radius:15px;
+    object-fit:cover;
+}
+.tag {
+    position:absolute;
+    top:12px;
+    right:12px;
+    padding:4px 10px;
+    border-radius:15px;
+    font-size:12px;
+    color:white;
+    background:#28a745;
+}
+.nonveg-tag {background:#d11c1c;}
+.title {font-size:20px;margin-top:10px;}
+.price {font-size:18px;margin-top:5px;font-weight:600;}
+
+/* GALLERY */
+.gallery {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+    padding:20px 40px;
+}
+.gallery img {
+    width:100%;
+    border-radius:15px;
+    height:220px;
+    object-fit:cover;
+    transition:0.3s;
+}
+.gallery img:hover {transform:scale(1.03);}
+
+/* CHEF SECTION */
+.chef {
+    display:flex;
+    gap:30px;
+    align-items:center;
+    padding:40px;
+    flex-wrap:wrap;
+}
+.chef img {
+    width:340px;
+    border-radius:20px;
+}
+.chef-text {flex:1;font-size:18px;}
+
+/* SIGNATURE DISHES */
+.signature-dishes {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    padding:40px;
+}
+.signature-dishes .dish-card {
+    background:white;
+    border-radius:18px;
+    padding:20px;
+    box-shadow:0 3px 12px rgba(0,0,0,0.1);
+    text-align:center;
+}
+.signature-dishes img {
+    width:100%;
+    height:180px;
+    border-radius:15px;
+    object-fit:cover;
+    margin-bottom:10px;
+}
+.signature-dishes .dish-title {font-size:20px;font-weight:600;}
+
+/* TESTIMONIALS */
+.testimonials {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+    padding:20px 40px;
+}
+.review {
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+.review img {
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:10px;
+}
+
+/* RESERVATION FORM */
+form {
+    width:90%;
+    max-width:600px;
+    margin:20px auto;
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+form input, form select {
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:10px;
+    border:1px solid #aaa;
+}
+form button {
+    width:100%;
+    padding:12px;
+    background:#b01717;
+    color:white;
+    border:none;
+    border-radius:10px;
+    margin-top:10px;
+    font-size:18px;
+    cursor:pointer;
+}
+form button:hover {background:#7e1111;}
+
+/* FOOTER */
+footer {
+    text-align:center;
+    padding:20px;
+    background:#8b1818;
+    color:white;
+    margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero" id="home">
+    <h1>ZAIRA</h1>
+    <p>5-Star Michelin • Indian • Continental • Italian</p>
+</div>
+
+<!-- NAV -->
+<nav>
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#chef">Chef</a>
+    <a href="#signature">Signature Dishes</a>
+    <a href="#review">Reviews</a>
+    <a href="#reserve">Reserve</a>
+</nav>
+
+<!-- ABOUT SECTION -->
+<section id="about">
+<h2>About ZAIRA</h2>
+<div style="max-width:800px;margin:0 auto;padding:0 20px;font-size:18px;line-height:1.7;">
+<p>Founded with a passion for exquisite dining, ZAIRA has been redefining luxury gastronomy for over a decade.
+Our concept blends traditional Indian flavors with global culinary techniques to deliver a world-class experience.
+We are committed to using the freshest ingredients and sustainable practices to craft every dish with perfection.
+At ZAIRA, every meal is a journey — from the first bite to the last — offering a symphony of flavors that linger in memory.</p>
+</div>
+</section>
+
+<!-- MENU SECTION -->
+<section id="menu">
+<h2>Our Menu</h2>
+
+<div class="filters">
+    <button onclick="filterMenu('all')">All</button>
+    <button onclick="filterMenu('veg')">Veg</button>
+    <button onclick="filterMenu('nonveg')">Non-Veg</button>
+    <button onclick="filterMenu('indian')">Indian</button>
+    <button onclick="filterMenu('continental')">Continental</button>
+    <button onclick="filterMenu('italian')">Italian</button>
+</div>
+
+<div class="menu">
+
+    <!-- INDIAN VEG -->
+    <div class="card indian veg">
+        <span class="tag">VEG</span>
+        <img src="https://images.unsplash.com/photo-1617196035073-3c6c2f9b3917?auto=format&fit=crop&w=800&q=80">
+        <div class="title">Paneer Butter Masala</div>
+        <div class="price">₹320</div>
+    </div>
+
+    <div class="card indian veg">
+        <span class="tag">VEG</span>
+        <img src="https://images.unsplash.com/photo-1589307004391-7a4ee3e7f8b9?auto=format&fit=crop&w=800&q=80">
+        <div class="title">Veg Dum Biryani</div>
+        <div class="price">₹250</div>
+    </div>
+
+    <!-- INDIAN NON-VEG -->
+    <div class="card indian nonveg">
+        <span class="tag nonveg-tag">NON-VEG</span>
+        <img src="https://images.unsplash.com/photo-1604908177522-04065f181de0?auto=format&fit=crop&w=800&q=80">
+        <div class="title">Chicken Tikka Masala</div>
+        <div class="price">₹420</div>
+    </div>
+
+    <div class="card indian nonveg">
+        <span class="tag nonveg-tag">NON-VEG</span>
+        <img src="https://images.unsplash.com/photo-1625944393276-8d899e3bca99?auto=format&fit=crop&w=800&q=80">
+        <div class="title">Mutton Rogan Josh</div>
+        <div class="price">₹550</div>
+    </div>
+
+    <!-- ITALIAN -->
+    <div class="card italian veg">
+        <span class="tag">VEG</span>
+        <img src="https://images.unsplash.com/photo-1601924571521-0f04e3f4d929?auto=format&fit=crop&w=800&q=80">
+        <div class="title">Margherita Pizza</div>
+        <div class="price">₹480</div>
+    </div>
+
+    <div class="card italian nonveg">
+        <span class="tag nonveg-tag">NON-VEG</span>
+        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=800&q=80">
+        <div class="title">Chicken Alfredo Pasta</div>
+        <div class="price">₹520</div>
+    </div>
+
+    <!-- CONTINENTAL -->
+    <div class="card continental veg">
+        <span class="tag">VEG</span>
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80">
+        <div class="title">Grilled Veg Platter</div>
+        <div class="price">₹450</div>
+    </div>
+
+    <div class="card continental nonveg">
+        <span class="tag nonveg-tag">NON-VEG</span>
+        <img src="https://images.unsplash.com/photo-1603133872878-684f20747ae5?auto=format&fit=crop&w=800&q=80">
+        <div class="title">Herb Chicken Steak</div>
+        <div class="price">₹650</div>
+    </div>
+
+</div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+<h2>People Enjoying at ZAIRA</h2>
+<div class="gallery">
+    <img src="https://images.unsplash.com/photo-1522770179533-24471fcdba45?auto=format&fit=crop&w=800&q=80">
+    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80">
+    <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=800&q=80">
+</div>
+</section>
+
+<!-- CHEF SECTION -->
+<section id="chef">
+<h2>Meet Our Michelin-Star Chef</h2>
+<div class="chef">
+    <img src="https://images.unsplash.com/photo-1540236466207-3f4b1f1d36d0?auto=format&fit=crop&w=800&q=80">
+    <div class="chef-text">
+        <p>Chef Aarav Kapoor, with 18+ years of global experience, brings Michelin excellence to ZAIRA.</p>
+        <p>Known for reinventing traditional Indian flavors using modern techniques, he has worked in New York, Paris, and Dubai.</p>
+    </div>
+</div>
+</section>
+
+<!-- SIGNATURE DISHES SECTION -->
+<section id="signature">
+<h2>Chef's Signature Dishes</h2>
+<div class="signature-dishes">
+    <div class="dish-card">
+        <img src="https://images.unsplash.com/photo-1617196035073-3c6c2f9b3917?auto=format&fit=crop&w=800&q=80">
+        <div class="dish-title">Truffle Butter Chicken</div>
+    </div>
+    <div class="dish-card">
+        <img src="https://images.unsplash.com/photo-1603133872878-684f20747ae5?auto=format&fit=crop&w=800&q=80">
+        <div class="dish-title">Smoked Burrata Tikka</div>
+    </div>
+    <div class="dish-card">
+        <img src="https://images.unsplash.com/photo-1601924571521-0f04e3f4d929?auto=format&fit=crop&w=800&q=80">
+        <div class="dish-title">Saffron Risotto with Tandoori Prawns</div>
+    </div>
+    <div class="dish-card">
+        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=800&q=80">
+        <div class="dish-title">Lamb Chops with Masala Glaze</div>
+    </div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="review">
+<h2>Customer Reviews</h2>
+<div class="testimonials">
+    <div class="review">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&q=80">
+        ⭐⭐⭐⭐⭐  
+        <p>"Best biryani of my life!" – Aditi</p>
+    </div>
+
+    <div class="review">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80">
+        ⭐⭐⭐⭐⭐  
+        <p>"Amazing ambience and authentic taste." – Rahul</p>
+    </div>
+
+    <div class="review">
+        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&q=80">
+        ⭐⭐⭐⭐⭐  
+        <p>"True Michelin-level dining." – Sangeeta</p>
+    </div>
+</div>
+</section>
+
+<!-- RESERVATION FORM -->
+<section id="reserve">
+<h2>Reserve a Table</h2>
+<form onsubmit="event.preventDefault(); alert('Your table has been reserved!');">
+    <input type="text" placeholder="Your Name" required>
+    <input type="date" required>
+    <input type="time" required>
+    <select required>
+        <option>2 Guests</option>
+        <option>4 Guests</option>
+        <option>6 Guests</option>
+        <option>8 Guests</option>
+    </select>
+    <button>Reserve Now</button>
+</form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © 2025 ZAIRA Restaurant • All Rights Reserved
+</footer>
+
+<script>
+function filterMenu(category) {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.style.display = "none";
+        if (category === "all" || card.classList.contains(category))
+            card.style.display = "block";
+    });
+}
+</script>
+
+</body>
+</html>
